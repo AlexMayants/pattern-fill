@@ -25,6 +25,7 @@
         var markup,
             id,
             pattern,
+            fill,
             image;
         if (color && color.pattern && prop === 'fill') {
             id = 'highcharts-pattern-' + idCounter++;
@@ -36,6 +37,15 @@
                     height: color.height
                 })
                 .add(this.renderer.defs);
+            fill = this.renderer.createElement('rect')
+                .attr({
+                    x: 0,
+                    y: 0,
+                    width: color.width,
+                    height: color.height,
+                    fill: color.bgcolor
+                })
+                .add(pattern);
             image = this.renderer.image(
                 color.pattern, 0, 0, color.width, color.height
             ).add(pattern);
